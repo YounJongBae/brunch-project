@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}brunch{% endblock %}
+{% block body %}
+{% include "navbar.html" %}
+<div class="container">
+  <form action="" method="post">
+  {% csrf_token %}
+    <div class="form-group">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <select class="form-control" name="category" required="">
+            <option selected value="">Keyword</option>
+            <option>TECH</option>
+            <option>TRAVEL</option>
+            <option>HEALTH</option>
+            <option>CULTURE</option>
+          </select>
+        </div>
+        <input name="title" type="text" class="form-control" placeholder="제목을 입력하세요" required="">
+      </div>
+      <input class="form-control form-control-sm border-0" name="subtitle" type="text" placeholder="소제목을 입력하세요" required="">
+      <hr>
+      <textarea class="form-control border-0" name="content" rows="23" placeholder="내용을 입력하세요" required=""></textarea>
+      <!-- <div class="form-group">
+        <label for="exampleFormControlSelect2">Hashtag</label>
+        <select multiple class="form-control" id="exampleFormControlSelect2" name="hashtag">
+          {% for hashtag in hashtag_list %}
+          <option>{{ hashtag }}</option>
+          {% endfor %}
+        </select>
+      </div> -->
+    </div>
+    <button type="submit" class="btn btn-outline-secondary">저장</button>
+  </form>
+</div>
+{% endblock %}

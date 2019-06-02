@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}로그인{% endblock %}
+{% block body %}
+<hr class="mb-4">
+<div class="container">
+  <form method="post" action="" class="form-signin">
+    <h1 class="h3 mb-3 font-weight-normal text-center">시작하기</h1>
+    <hr class="mb-4">
+    {% csrf_token %}
+    <input type="text" name="username" class="form-control" placeholder="ID" required="" autofocus="">
+    <input type="password" name="password" class="form-control" placeholder="Password" required="">
+    {{ error }}
+    <button class="btn btn-lg btn-outline-secondary btn-block" type="submit">login</button>
+    <div class="modal-footer">
+      <p class="text-secondary">아직 회원이 아니신가요?</p>
+      <a href="/signup/">
+        <button type="button" class="btn btn-outline-secondary">회원가입</button>
+      </a>
+    </div>
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}글을 쓰는 공간{% endblock %}
+{% block body %}
+{% include "navbar.html" %}
+<div class="container">
+  <hr class="mb-4">
+  <div class="row mb-2">
+    {% for article in article_list %}
+    <div class="col-md-6">
+      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+          <strong class="d-inline-block mb-2 text-secondary">{{ article.get_category_display }}</strong>
+          <a href="/{{ article.id }}/"><h3 class="mb-1">{{ article.title }}</h3></a>
+          <h6 class="card-text mb-2 text-secondary">{{ article.subtitle }}</h6>
+          <div class="mb-1 text-muted text-right">{{ article.created_at }}    by. <a href="/@{{ article.client }}/">{{ article.client.name }}</a></div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+<main role="main" class="container">
+  <br><br><hr><br>
+  <h5 class="pb-4 mb-4 font-italic text-center">
+    H a s h t a g s
+  </h5>
+
+  <div class="row">
+    {% for hashtag in hashtag_list %}
+    <div class="col-md-2">
+      <a href="/?hashtag={{ hashtag.name }}">
+        <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <h4 class="mb-0 text-secondary text-center">{{ hashtag.name }}</h4>
+          </div>
+        </div>
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+</main>
+{% endblock %}
